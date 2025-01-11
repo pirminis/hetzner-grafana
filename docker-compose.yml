@@ -1,0 +1,26 @@
+services:
+  graphite:
+    image: graphiteapp/graphite-statsd
+    container_name: graphite
+    restart: always
+    ports:
+      - "2002:80"
+      - "2003-2004:2003-2004"
+      - "2023-2024:2023-2024"
+      - "8125:8125/udp"
+      - "8126:8126"
+    volumes:
+      - "./graphite_data/graphite_conf:/opt/graphite/conf"
+      - "./graphite_data/graphite_storage:/opt/graphite/storage"
+      - "./graphite_data/statsd_conf:/opt/statsd/config"
+  grafana:
+    image: grafana/grafana-enterprise
+    container_name: grafana
+    restart: unless-stopped
+    ports:
+      - "3001:3000"
+    volumes:
+      - "./grafana_data:/var/lib/grafana"
+    environment:
+      - "GF_SECURITY_ADMIN_USER=your-user-name"
+      - "GF_SECURITY_ADMIN_PASSWORD=Your.Really.Long1.And.Secure!.Password"
