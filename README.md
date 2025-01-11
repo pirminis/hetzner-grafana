@@ -16,7 +16,7 @@ This is a way to setup a Grafana + Graphite in your local machine or VPS like th
 
 Open the browser and visit `http://localhost:3001`. Login with the username and password from docker-compose.yml file.
 
-When grafana website is loaded, go to Menu -> Connections -> Add new connection -> Search for "graphite" -> Click on it -> Click on "Add new data source" -> HTTP -> URL -> Enter "host.docker.internal" -> Scroll to the bottom -> Click "Save & test"
+When grafana website is loaded, go to Menu -> Connections -> Add new connection -> Search for "graphite" -> Click on it -> Click on "Add new data source" -> HTTP -> URL -> Enter `host.docker.internal:2002` -> Scroll to the bottom -> Click "Save & test"
 
 Don't forget to put new grafana and graphite folders to `.gitignore`:
 ```
