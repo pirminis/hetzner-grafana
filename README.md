@@ -26,6 +26,10 @@ graphite_data
 
 And that's it!
 
+## On Hetzner
+
+For instructions check out this video I made: [https://streamable.com/qpqtll](https://streamable.com/qpqtll)
+
 # Sending stats
 
 ## On your local machine
@@ -42,3 +46,7 @@ end
 
 measure("worker.my_worker.execution_time", 123, 'ms')
 ```
+
+## On Hetzner
+
+Same as on your local machine, just use your Hetzner server's IP address instead of localhost.
