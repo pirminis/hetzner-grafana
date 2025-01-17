@@ -28,7 +28,7 @@ And that's it!
 
 ## On Hetzner
 
-For instructions check out this video I made: [https://streamable.com/qpqtll](https://streamable.com/qpqtll)
+For instructions check out this video I made: [https://drive.google.com/file/d/1YbTEHO40mP2Nmi2cA8Zkk8Vbnk9kLWlu/view?usp=sharing](https://drive.google.com/file/d/1YbTEHO40mP2Nmi2cA8Zkk8Vbnk9kLWlu/view?usp=sharing)
 
 # Sending stats
 
