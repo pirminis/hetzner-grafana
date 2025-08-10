@@ -8,7 +8,7 @@ This is a way to setup a Grafana + Graphite in your local machine or VPS like th
 
 - Copy `docker-compose.yml` to your desired folder
 - Open `docker-compose.yml` and modify `GF_SECURITY_ADMIN_USER`, `GF_SECURITY_ADMIN_PASSWORD` and `GRAPHITE_BASIC_AUTH_PASSWORD` to your desired values. These are your grafana login credentials.
-- Create `./nginx/graphite.conf` with content below:
+- Create `./nginx/graphite.conf` with the content below:
     ```
     server {
       listen 80;
@@ -45,7 +45,7 @@ When grafana website is loaded, go to:
 - Search for "graphite" and click on it
 - Click on "Add new data source"
 - Find HTTP -> URL -> Enter `host.docker.internal:2002`
-- Scroll to Auth -> Basic Auth and turn it ON -> Enter "graphite" for username and your password from docker-compose.yml and htpasswd (GRAPHITE_BASIC_AUTH_PASSWORD) for password
+- Scroll to Auth -> Basic Auth and turn it ON -> Enter "graphite" for username and your password from docker-compose.yml (GRAPHITE_BASIC_AUTH_PASSWORD) and htpasswd for password
 - Scroll to the bottom 
 - Click "Save & test"
 
