@@ -23,9 +23,9 @@ services:
     volumes:
       - "./grafana_data:/var/lib/grafana"
     environment:
-      - GF_SECURITY_ADMIN_USER="your-user-name"
-      - GF_SECURITY_ADMIN_PASSWORD="Your.Really.Long1.And.Secure!.Password"
-      - GRAPHITE_BASIC_AUTH_PASSWORD="A-Very8-Secure.-Password"
+      - "GF_SECURITY_ADMIN_USER=grafana"
+      - "GF_SECURITY_ADMIN_PASSWORD=grafanapw"
+      - "GRAPHITE_BASIC_AUTH_PASSWORD=graphitepw"
 
   graphite-proxy:
     image: nginx:1.27-alpine
