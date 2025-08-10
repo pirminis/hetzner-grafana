@@ -3,6 +3,8 @@ services:
     image: graphiteapp/graphite-statsd:latest
     container_name: graphite
     restart: unless-stopped
+    ports:
+      - "8125:8125/udp" # you will send StatsD metrics here
     expose:
       - "80"
       - "2003/tcp"
