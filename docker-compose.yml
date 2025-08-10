@@ -1,20 +1,23 @@
 services:
   graphite:
-    image: graphiteapp/graphite-statsd
+    image: graphiteapp/graphite-statsd:latest
     container_name: graphite
-    restart: always
+    restart: unless-stopped
     ports:
-      - "2002:80"
-      - "2003-2004:2003-2004"
-      - "2023-2024:2023-2024"
-      - "8125:8125/udp"
-      - "8126:8126"
+      - "8125:8125/udp" # you will send StatsD metrics here
+    expose:
+      - "80"
+      - "2003/tcp"
+      - "2003/udp"
+      - "2004/tcp"
+      - "2004/udp"
     volumes:
       - "./graphite_data/graphite_conf:/opt/graphite/conf"
       - "./graphite_data/graphite_storage:/opt/graphite/storage"
       - "./graphite_data/statsd_conf:/opt/statsd/config"
+
   grafana:
-    image: grafana/grafana-enterprise
+    image: grafana/grafana-enterprise:latest
     container_name: grafana
     restart: unless-stopped
     ports:
@@ -24,3 +27,15 @@ services:
     environment:
       - "GF_SECURITY_ADMIN_USER=your-user-name"
       - "GF_SECURITY_ADMIN_PASSWORD=Your.Really.Long1.And.Secure!.Password"
+      - "GRAPHITE_BASIC_AUTH_PASSWORD=Your-Safe4-Graphite-Pass#word"
+
+  graphite-proxy:
+    image: nginx:1.27-alpine
+    depends_on:
+      - graphite
+    restart: unless-stopped
+    ports:
+      - "2002:80"
+    volumes:
+      - ./nginx/graphite.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./nginx/.htpasswd:/etc/nginx/.htpasswd:ro
